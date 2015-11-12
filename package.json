@@ -1,0 +1,19 @@
+{
+  "name": "justmarkup-com",
+  "version": "1.0.0",
+  "author": "Michael Scharnagl @justmarkup",
+  "private": true,
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-autoprefixer": "^2.0.0",
+    "grunt-browser-sync": "^2.1.3",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-cssc": "*",
+    "grunt-htmlhint": "*",
+    "grunt-static-inline": "^0.1.4",
+    "matchdep": "*"
+  }
+}

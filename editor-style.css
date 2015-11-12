@@ -1,0 +1,41 @@
+/*
+Theme Name: Justmarkup
+Description: Used to style the TinyMCE editor.
+*/
+
+html,
+body {
+	margin: 0 20px;
+	padding: 0;
+	font-family: 'Cantarell', Helvetica, Arial, sans-serif;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+h3 {
+	font-family: 'Muli', sans-serif;
+	font-weight: 300;
+	font-size: 24px;
+	display: inline;
+}
+
+h3 a {
+	color: #111;
+	text-decoration: none;
+	border-bottom: 1px solid $color-blue;
+}
+
+li {
+	padding: 4px 0;
+}
+
+p {
+	line-height: 1.6;
+}
+
+a {
+	color: #111;
+}

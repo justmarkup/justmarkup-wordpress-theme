@@ -1,0 +1,66 @@
+/**
+ * Everything in the header, including logo and navigation
+ */
+
+.header {
+	h1 {
+		margin: 0;
+	}
+}
+
+.logo {
+	display: block;
+	background-image: url(https://justmarkup.com/justmarkup2015/src/img/logo.svg);
+	text-indent: -2015em;
+	height: 90px;
+	width: 110px;
+	margin: 10px 0;
+}
+
+
+.nav {
+	@extend .clearfix;
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		list-style: none;
+	}
+	ul a {
+		display: block;
+		color: $color-black;
+		text-decoration: none;
+		border-top: 1px solid $color-grey;
+		padding: 8px 0;
+		float: left;
+		width: 50%;
+		transition: all 400ms;
+	}
+	li:nth-child(3) a,
+	li:last-child a {border-bottom: 1px solid $color-grey;}
+}
+
+@media all and (min-width: 450px) {
+	.logo {margin: 10px auto 30px auto;}
+	.nav ul {text-align: center; padding: 0 0 20px 0;}
+	.nav li {
+		display: inline;
+		&.current_page_item a {
+			border-color: $color-green;
+			border-width: 2px;
+			padding: 7px 4px;
+		}
+	}
+	.nav ul a {
+		display: inline;
+		width: auto;
+		float: none;
+		margin: 0 15px 0 0;
+		padding: 8px 4px;
+		border-bottom: 1px solid $color-grey;
+		&:hover {
+			background: rgba($color-grey, 0.2);
+		}
+	}
+}
