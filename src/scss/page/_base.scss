@@ -11,8 +11,9 @@ body {
 
 body {
 	margin: 0 auto;
-	width: 1200px;
+	width: 1000px;
 	max-width: 94%;
+	max-width: 90vw;
 	background-image: url(https://justmarkup.com/justmarkup2015/src/img/bg.png);
 }
 
@@ -91,6 +92,7 @@ p {
 		a {
 			color: $color-black;
 			text-decoration: none;
+			font-size: 20px;
 			border-bottom: 1px solid $color-blue;
 		}
 	}
@@ -105,6 +107,9 @@ p {
 	}
 	p a {color: currentColor;}
 }
+
+.main-front h3 a {font-size: 24px;}
+
 
 .article-details a {
 	color: $color-black;
@@ -146,7 +151,7 @@ p {
 	h2 {
 		font-size: 24px;
 		font-weight: 400;
-		margin: 0 0 5px 0;
+		margin: 0 0 14px 0;
 	}
 	h3 a {color: $color-black;}
 }

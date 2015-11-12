@@ -6,4 +6,5 @@
 	@extend .clearfix;
 	padding: 10px 0;
 	border-top: 4px solid $color-green;
+	a {color: $color-black;}
 }
