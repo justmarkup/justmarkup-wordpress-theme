@@ -8,7 +8,7 @@
  * @since justmarkup.com 1.0
  */
 ?>
-	<div id="comments">
+	<div id="comments" class="comments-wrapper">
 	<?php if ( post_password_required() ) : ?>
 		<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'justmarkup' ); ?></p>
 	</div><!-- #comments -->

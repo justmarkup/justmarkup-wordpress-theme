@@ -13,7 +13,12 @@
 	</main><!-- #main -->
 
 	<footer class="footer" role="contentinfo">
-        <small>Copyright &copy; Michael Scharnagl <time datetime="<?php echo date('Y'); ?>"><?php echo date('Y'); ?></time>. All rights reserved. <a href="<?php echo get_site_url(); ?>/index.php/imprint/"><?php _e( 'Imprint', 'justmarkup' ); ?></a></small>
-    </footer>
+		<small>Copyright &copy; Michael Scharnagl <time datetime="<?php echo date('Y'); ?>"><?php echo date('Y'); ?></time>. All rights reserved. <a href="<?php echo get_site_url(); ?>/index.php/imprint/"><?php _e( 'Imprint', 'justmarkup' ); ?></a></small>
+	</footer>
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('service-worker.js');
+		}
+	</script>
 </body>
 </html>

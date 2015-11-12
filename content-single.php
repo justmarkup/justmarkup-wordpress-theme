@@ -19,9 +19,10 @@
 
 		<div class="entry-content">
 			<?php the_content(); ?>
-			<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'justmarkup' ) . '</span>', 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
 	</article>
+
+	<?php comments_template( '', true ); ?>
 
 	<section class="article-about">
 		<h3>Michael Scharnagl</h3>

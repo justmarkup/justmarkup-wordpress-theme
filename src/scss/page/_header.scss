@@ -34,14 +34,14 @@
 		border-top: 1px solid $color-grey;
 		padding: 8px 0;
 		float: left;
-		width: 50%;
+		width: 100%;
 		transition: all 400ms;
 	}
 	li:nth-child(3) a,
 	li:last-child a {border-bottom: 1px solid $color-grey;}
 }
 
-@media all and (min-width: 450px) {
+@media all and (min-width: 300px) {
 	.logo {margin: 10px auto 30px auto;}
 	.nav ul {text-align: center; padding: 0 0 20px 0;}
 	.nav li {

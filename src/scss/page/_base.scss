@@ -29,6 +29,17 @@ img {
 	height: auto;
 }
 
+input,
+textarea {
+	max-width: 100%;
+}
+
+textarea {width: 100%;}
+
+label {
+	display: block;
+}
+
 code {
 	padding: 0 3px;
 	font-size: 16px;
@@ -44,6 +55,12 @@ pre {
 	border: 2px solid $color-green;
 	border-width: 2px 0;
 	code {background: none;}
+}
+
+h1, h2, h3, h4, h5, p, li, a {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
 }
 
 h2 {
@@ -138,4 +155,23 @@ p {
 	padding: 10px;
 	background: $color-grey;
 	margin: 0 0 30px 0;
+}
+
+
+// comments
+.comments-wrapper {
+	a {color: $color-black;}
+}
+
+.commentlist {
+	margin: 0;
+	padding: 20px 0 0 0;
+	list-style: none;
+	img {
+		border-radius: 20px;
+	}
+	li {
+		padding-bottom: 20px;
+		border-bottom: 1px solid $color-grey;
+	}
 }
