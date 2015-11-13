@@ -1,0 +1,15 @@
+{
+  "lang": "en",
+  "name": "justmarkup",
+  "icons": [
+    {
+      "src": "/log/wp-content/themes/justmarkup.com/src/img/icon.png",
+      "sizes": "300x300",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/log/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}
