@@ -17,11 +17,21 @@ module.exports = function(grunt){
 				src: ['*.html', '*.tpl']
 			}
 		},
+		stripDebug: {
+			dist: {
+				files: grunt.file.expandMapping(['src/js/*.js'], 'dist/js/', {
+					flatten: true,
+					rename: function(destBase, destPath) {
+							return destBase+destPath;
+					}
+				})
+			}
+		},
 		uglify: {
 			build: {
 				files: {
-					'dist/js/head.min.js': ['src/js/ctm.js', 'src/js/fontloader.js'],
-					'dist/js/sw.min.js': ['src/js/sw.js']
+					'dist/js/head.min.js': ['dist/js/ctm.js', 'dist/js/fontloader.js'],
+					'dist/js/sw.min.js': ['dist/js/sw.js']
 				}
 			}
 		},
@@ -80,7 +90,7 @@ module.exports = function(grunt){
 			},
 			js: {
 				files: ['src/js/**/*.js'],
-				tasks: ['uglify']
+				tasks: ['stripDebug', 'uglify']
 			},
 			css: {
 				files: ['src/scss/**/*.scss'],

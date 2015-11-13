@@ -14,6 +14,7 @@
     "grunt-cssc": "*",
     "grunt-htmlhint": "*",
     "grunt-static-inline": "^0.1.4",
+    "grunt-strip-debug": "^1.0.1",
     "matchdep": "*"
   }
 }
