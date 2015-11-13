@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+	<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Offline | justmarkup</title>
+	<script src="wp-content/themes/justmarkup.com/dist/js/head.min.js"></script>
+	<style>
+	@{css_include}@
+	</style>
+</head>
+<body>
+	<header class="header"role="banner">
+		<p class="banner">This site is undergoing an <a href="https://justmarkup.com/log/2015/11/open-redesign/">open redesign</a>. See the <a href="https://github.com/justmarkup/justmarkup.com">Code</a> and open <a href="https://github.com/justmarkup/justmarkup.com/issues">Issues</a>.</p>
+		
+		<h1><a class="logo" href="/log/">justmarkup</a></h1>
+		
+		<nav class="nav" role="navigation">
+			<div>
+				<ul class="menu">
+					<li><a href="/log/">Articles</a></li>
+					<li><a href="/log/about/">About</a></li>
+					<li><a href="/log/contact/">Contact</a></li>
+				</ul>
+			</div> 
+		</nav>
+	</header>
+	<main class="main site-offline" role="main">
+
+		<h1 class="entry-title">Unable to connect to the Internet</h1>
+
+	</main><!-- #main -->
+
+	<footer class="footer" role="contentinfo">
+		<small>Copyright &copy; Michael Scharnagl <time datetime="2015">2015</time>. All rights reserved. <a href="/log/imprint/">Imprint</a></small>
+	</footer>
+
+	<script>
+		if ('serviceWorker' in navigator) {
+
+			navigator.serviceWorker.register('/log/sw.min.js', {scope: '/log/'}).then(function(registration) {
+				console.log('success');
+			}).catch(function(error) {
+				console.log('error', error);
+			});
+		}
+	</script>
+</body>
+</html>

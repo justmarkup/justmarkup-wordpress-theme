@@ -9,7 +9,7 @@
  * @since justmarkup.com 1.0
  */
 ?><!DOCTYPE html>
-<html class="no-js" <?php language_attributes(); ?>>
+<html class="no-js" lang="en">
 <!--<![endif]-->
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -43,7 +43,7 @@
 	if ( is_singular() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
 	?>
-	<script>var mustard=false; if('visibilityState' in document){document.documentElement.className='js';mustard=true}else{document.documentElement.className = 'oldie';}function loadFont(a,b,c,d){function e(){if(!window.FontFace)return!1;var a=new FontFace("t",'url("data:application/font-woff2,") format("woff2")',{}),b=a.load();try{b.then(null,function(){})}catch(c){}return"loading"===a.status}var f=navigator.userAgent,g=!window.addEventListener||f.match(/(Android (2|3|4.0|4.1|4.2|4.3))|(Opera (Mini|Mobi))/)&&!f.match(/Chrome/);if(!g){var h={};try{h=localStorage||{}}catch(i){}var j="x-font-"+a,k=j+"url",l=j+"css",m=h[k],n=h[l],o=document.createElement("style");if(o.rel="stylesheet",document.head.appendChild(o),!n||m!==b&&m!==c){var p=c&&e()?c:b,q=new XMLHttpRequest;q.open("GET",p),q.onload=function(){q.status>=200&&q.status<400&&(h[k]=p,h[l]=q.responseText,d||(o.textContent=q.responseText))},q.send()}else o.textContent=n}}loadFont('sourceSansPro', 'fonts.css', 'fonts1.css', true)</script>
+	<script src="<?php echo get_template_directory_uri(); ?>/dist/js/head.min.js"></script>
 	<style>
 	@{css_include}@
 	</style>
@@ -51,7 +51,7 @@
 <body <?php body_class(); ?>>
 	<header class="header"role="banner">
 		<p class="banner">This site is undergoing an <a href="https://justmarkup.com/log/2015/11/open-redesign/">open redesign</a>. See the <a href="https://github.com/justmarkup/justmarkup.com">Code</a> and open <a href="https://github.com/justmarkup/justmarkup.com/issues">Issues</a>.</p>
-		<h1><a class="logo" href="<?php echo get_home_url(); ?>">justmarkup</a></h1>
+		<h1><a class="logo" href="<?php echo get_home_url(); ?>/">justmarkup</a></h1>
 		<nav class="nav" role="navigation">
 			<?php wp_nav_menu(); ?> 
 		</nav>
