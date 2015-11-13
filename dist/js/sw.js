@@ -1,5 +1,5 @@
 const CACHE_NAME = 'justmarkup'
-const CACHE_VERSION = '-v1';
+const CACHE_VERSION = '-v2';
 
 const theme_path = 'wp-content/themes/justmarkup.com/';
 

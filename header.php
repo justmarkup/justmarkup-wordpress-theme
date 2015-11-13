@@ -14,6 +14,8 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
+
+<link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/manifest.json" />
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
