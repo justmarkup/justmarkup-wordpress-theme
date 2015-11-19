@@ -10,11 +10,22 @@
 
 .logo {
 	display: block;
-	background-image: url(https://justmarkup.com/justmarkup2015/src/img/logo.svg);
-	text-indent: -2015em;
 	height: 90px;
 	width: 110px;
 	margin: 10px 0;
+	svg #poly-right,
+	svg #poly-left {
+		transition: all 300ms;
+	}
+}
+
+.logo:hover {
+	svg #poly-right {
+	  transform: scale(0.94);
+	}
+	svg #poly-left {
+	  transform: scale(1.4);
+	}
 }
 
 .nav {
