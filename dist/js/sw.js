@@ -31,15 +31,31 @@ self.addEventListener('fetch', function(event) {
 	void 0;
 
 	if (requestURL.hostname == location.hostname) {
-		// 
 		void 0;
-		event.respondWith(
-			caches.match(event.request).then(function(response) {
-				return response || fetch(event.request);
-			}).catch(function() {
-				// show a fallback if both cache and network fails
-				void 0;
-				return caches.match(theme_path + 'offline.html');
+
+		event.respondWith(caches.match(event.request).then(function(cached) {
+				var networked = fetch(event.request)
+					.then(fetchedFromNetwork, unableToResolve)
+					.catch(unableToResolve);
+
+				return cached || networked;
+
+				function fetchedFromNetwork(response) {
+
+					var cacheCopy = response.clone();
+
+					caches.open(CACHE_NAME + CACHE_VERSION)
+						.then(function add(cache) {
+							cache.put(event.request, cacheCopy);
+						});
+
+						void 0;
+					return response;
+				}
+
+				function unableToResolve () {
+					return caches.match(theme_path + 'offline.html');
+				}
 			})
 		);
 	} else {
