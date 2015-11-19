@@ -28,6 +28,7 @@
 		<h3>Michael Scharnagl</h3>
 		<img src="https://justmarkup.com/justmarkup2015/src/img/me.jpg" alt="Portrait Michael Scharnagl">
 		<p>Follow me: <a href="http://twitter.com/justmarkup">@justmarkup</a></p>
+		<p>Subscribe to RSS: <a href="http://justmarkup.com/log/feed">/feed</a></p>
 		<p>A freelance front-end developer focusing on HTML5, CSS, progressive enhancement and web performance. </p><p>You can <strong><a href="#">hire me</a></strong>.</p>
 	</section>
 </main>
