@@ -1,47 +1,120 @@
-const CACHE_NAME = 'justmarkup'
-const CACHE_VERSION = '-v4';
+var version = 'v1.0.1:';
 
-const theme_path = 'wp-content/themes/justmarkup.com/';
+var theme_path = 'wp-content/themes/justmarkup.com/';
 
-// The install event
-self.addEventListener('install', function(event) {
+var offlineFundamentals = [
+	'./',
+	theme_path + 'dist/js/head.min.js',
+	theme_path + 'offline.html'
+];
 
-	self.skipWaiting();
+//Add core website files to cache during serviceworker installation
+var updateStaticCache = function() {
+	return caches.open(version + 'fundamentals').then(function(cache) {
+		return Promise.all(offlineFundamentals.map(function(value) {
+			var request = new Request(value);
+			var url = new URL(request.url);
+			if (url.origin != location.origin) {
+				request = new Request(value, {mode: 'no-cors'});
+			}
+			return fetch(request).then(function(response) { 
+				var cachedCopy = response.clone();
+				return cache.put(request, cachedCopy); 
+				
+			});
+		}))
+	})
+};
 
-	event.waitUntil(
-		caches.open(CACHE_NAME + CACHE_VERSION).then(function prefill (cache) {
-			return cache.addAll([
-				'./',
-				theme_path + 'dist/js/head.min.js',
-				theme_path + 'offline.html',
-				new Request('https://justmarkup.com/favicon.ico', {mode: 'no-cors'}),
-				new Request('https://justmarkup.com/justmarkup2015/src/img/logo.svg', {mode: 'no-cors'}),
-				new Request('https://justmarkup.com/justmarkup2015/src/img/bg.png', {mode: 'no-cors'})
-			]);
+//Clear caches with a different version number
+var clearOldCaches = function() {
+	return caches.keys().then(function(keys) {
+			return Promise.all(
+          			keys
+            			.filter(function (key) {
+              				return key.indexOf(version) != 0;
+            			})
+            			.map(function (key) {
+              				return caches.delete(key);
+            			})
+        		);
 		})
-	);
+}
+
+/*
+	limits the cache
+	If cache has more than maxItems then it removes the first item in the cache
+*/
+var limitCache = function(cache, maxItems) {
+	cache.keys().then(function(items) {
+		if (items.length > maxItems) {
+			cache.delete(items[0]);
+		}
+	})
+}
+
+
+//When the service worker is first added to a computer
+self.addEventListener("install", function(event) {
+	event.waitUntil(updateStaticCache())
+})
+
+//Service worker handles networking
+self.addEventListener("fetch", function(event) {
+
+	//Fetch from network and cache
+	var fetchFromNetwork = function(response) {
+		var cacheCopy = response.clone();
+		if (event.request.headers.get('Accept').indexOf('text/html') != -1) {
+			caches.open(version + 'pages').then(function(cache) {
+				cache.put(event.request, cacheCopy).then(function() {
+					limitCache(cache, 25);
+				})
+			});
+		} else if (event.request.headers.get('Accept').indexOf('image') != -1) {
+			caches.open(version + 'images').then(function(cache) {
+				cache.put(event.request, cacheCopy).then(function() {
+					limitCache(cache, 10); 
+				});
+			});
+		} else {
+			caches.open(version + 'assets').then(function add(cache) {
+				cache.put(event.request, cacheCopy);
+			});
+		}
+
+		return response;
+	}
+
+	//Fetch from network failed
+	var fallback = function() {
+		if (event.request.headers.get('Accept').indexOf('text/html') != -1) {
+			return caches.match(event.request).then(function (response) { 
+				return response || caches.match(theme_path + 'offline.html');
+			})
+		} 
+	}
+	
+	//This service worker won't touch non-get requests
+	if (event.request.method != 'GET') {
+		return;
+	}
+	
+	//For HTML requests, look for file in network, then cache if network fails.
+	if (event.request.headers.get('Accept').indexOf('text/html') != -1) {
+        	event.respondWith(fetch(event.request).then(fetchFromNetwork, fallback));
+		return;
+    	}
+
+	//For non-HTML requests, look for file in cache, then network if no cache exists.
+	event.respondWith(
+		caches.match(event.request).then(function(cached) {
+			return cached || fetch(event.request).then(fetchFromNetwork, fallback);
+		})
+	)	
 });
 
-
-
-self.addEventListener('fetch', function(event) {
-	var requestURL = new URL(event.request.url);
-
-	if (requestURL.hostname == location.hostname) {
-		// don't cache admin resources
-		if (requestURL.href.match('\/wp-admin\/')) {
-			event.respondWith(fetch(event.request));
-		}
-		event.respondWith(
-			caches.match(event.request).then(function(response) {
-				return response || fetch(event.request);
-			}).catch(function() {
-				// show a fallback if both cache and network fails
-				return caches.match(theme_path + 'offline.html');
-			})
-		);
-	} else {
-		// don't cache external resources
-		event.respondWith(fetch(event.request));
-	}
+//After the install event
+self.addEventListener("activate", function(event) {
+	event.waitUntil(clearOldCaches())
 });
