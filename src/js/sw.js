@@ -54,10 +54,43 @@ var limitCache = function(cache, maxItems) {
 }
 
 
+/*
+	trims the cache
+	If cache has more than maxItems then it removes the excess items starting from the beginning
+*/
+var trimCache = function (cacheName, maxItems) {
+		caches.open(cacheName)
+				.then(function (cache) {
+						cache.keys()
+								.then(function (keys) {
+										if (keys.length > maxItems) {
+												cache.delete(keys[0])
+														.then(trimCache(cacheName, maxItems));
+										}
+								});
+				});
+};
+
+
 //When the service worker is first added to a computer
 self.addEventListener("install", function(event) {
-	event.waitUntil(updateStaticCache())
+	event.waitUntil(updateStaticCache()
+				.then(function() { 
+					return self.skipWaiting(); 
+				})
+			);
 })
+
+self.addEventListener("message", function(event) {
+	var data = event.data;
+	
+	//Send this command whenever many files are downloaded (ex: a page load)
+	if (data.command == "trimCache") {
+		trimCache(version + "pages", 25);
+		trimCache(version + "images", 10);
+		trimCache(version + "assets", 30);
+	}
+});
 
 //Service worker handles networking
 self.addEventListener("fetch", function(event) {
@@ -121,5 +154,9 @@ self.addEventListener("fetch", function(event) {
 
 //After the install event
 self.addEventListener("activate", function(event) {
-	event.waitUntil(clearOldCaches())
+	event.waitUntil(clearOldCaches()
+				.then(function() { 
+					return self.clients.claim(); 
+				})
+			);
 });

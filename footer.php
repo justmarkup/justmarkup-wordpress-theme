@@ -25,6 +25,11 @@
 				console.log('error', error);
 			});
 		}
+		window.addEventListener("load", function() {
+			if (navigator.serviceWorker.controller != null) {
+				navigator.serviceWorker.controller.postMessage({"command":"trimCache"});
+			}
+		});
 	</script>
 </body>
 </html>
