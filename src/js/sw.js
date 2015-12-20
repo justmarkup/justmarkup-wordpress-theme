@@ -1,4 +1,4 @@
-var version = 'v1.0.3:';
+var version = 'v1.0.4:';
 
 var theme_path = 'wp-content/themes/justmarkup.com/';
 
@@ -128,8 +128,8 @@ self.addEventListener("fetch", function(event) {
 		} 
 	}
 
-	//This service worker won't touch the admin area
-	if (event.request.url.match(/wp-admin/)) {
+	//This service worker won't touch the admin area and preview pages
+	if (event.request.url.match(/wp-admin/) || event.request.url.match(/preview=true/)) {
 		return;
 	}
 	

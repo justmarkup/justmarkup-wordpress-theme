@@ -18,12 +18,7 @@
 
 	<script>
 		if ('serviceWorker' in navigator) {
-
-			navigator.serviceWorker.register('/log/sw.min.js', {scope: '/log/'}).then(function(registration) {
-				console.log('success');
-			}).catch(function(error) {
-				console.log('error', error);
-			});
+			navigator.serviceWorker.register('/log/sw.min.js', {scope: '/log/'});
 		}
 		window.addEventListener("load", function() {
 			if (navigator.serviceWorker.controller != null) {
