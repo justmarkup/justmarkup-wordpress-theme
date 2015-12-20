@@ -1,4 +1,4 @@
-var version = 'v1.0.1:';
+var version = 'v1.0.3:';
 
 var theme_path = 'wp-content/themes/justmarkup.com/';
 
@@ -30,14 +30,14 @@ var updateStaticCache = function() {
 var clearOldCaches = function() {
 	return caches.keys().then(function(keys) {
 			return Promise.all(
-          			keys
-            			.filter(function (key) {
-              				return key.indexOf(version) != 0;
-            			})
-            			.map(function (key) {
-              				return caches.delete(key);
-            			})
-        		);
+								keys
+									.filter(function (key) {
+											return key.indexOf(version) != 0;
+									})
+									.map(function (key) {
+											return caches.delete(key);
+									})
+						);
 		})
 }
 
@@ -94,6 +94,11 @@ self.addEventListener("fetch", function(event) {
 			})
 		} 
 	}
+
+	//This service worker won't touch the admin area
+	if (event.request.url.match(/wp-admin/)) {
+		return;
+	}
 	
 	//This service worker won't touch non-get requests
 	if (event.request.method != 'GET') {
@@ -102,9 +107,9 @@ self.addEventListener("fetch", function(event) {
 	
 	//For HTML requests, look for file in network, then cache if network fails.
 	if (event.request.headers.get('Accept').indexOf('text/html') != -1) {
-        	event.respondWith(fetch(event.request).then(fetchFromNetwork, fallback));
+					event.respondWith(fetch(event.request).then(fetchFromNetwork, fallback));
 		return;
-    	}
+			}
 
 	//For non-HTML requests, look for file in cache, then network if no cache exists.
 	event.respondWith(

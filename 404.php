@@ -18,7 +18,9 @@ get_header(); ?>
 			<h2><?php _e( 'Recent Posts', 'justmarkup' ); ?></h2>
 			<ul>
 			<?php
-				$recent_posts = wp_get_recent_posts();
+				$args = array( 'post_status' => 'publish' );
+				$recent_posts = wp_get_recent_posts( $args );
+				
 				foreach( $recent_posts as $recent ){
 					echo '<li><a href="' . get_permalink($recent["ID"]) . '">' .   $recent["post_title"].'</a> </li> ';
 				}
