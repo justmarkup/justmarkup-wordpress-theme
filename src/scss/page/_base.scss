@@ -18,14 +18,14 @@ body {
 .main,
 .footer {
 	@extend .clearfix;
-	width: 1000px;
+	width: 62.5em;
 	max-width: 94%;
 	max-width: 90vw;
 	margin: 0 auto;
 }
 
 .main-front {
-	padding-top: 20px;
+	padding-top: 1.25em;
 }
 
 img {
@@ -45,8 +45,8 @@ label {
 }
 
 code {
-	padding: 0 3px;
-	font-size: 16px;
+	padding: 0 0.188em;
+	font-size: 1em;
 	background: rgba($color-grey, 0.2);
 }
 
@@ -54,9 +54,9 @@ pre {
 	background: rgba($color-grey, 0.2);
 	max-width: 100%;
 	overflow-x: scroll;
-	padding: 10px;
-	margin: 20px 0 !important;
-	border: 2px solid $color-green;
+	padding: 0.625em;
+	margin: 1.25em 0 !important;
+	border: 1px solid $color-green;
 	border-width: 2px 0;
 	code {background: none;}
 }
@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, p, li, a {
 
 h2 {
 	font-weight: 400;
-	font-size: 28px;
+	font-size: 1.75em;
 }
 
 a:hover {
@@ -82,25 +82,25 @@ p {
 }
 
 .article {
-	margin: 0 0 40px 0;
+	margin: 0 0 2.5em 0;
 	time {
 		display: block;
-		margin-bottom: 5px;
+		margin-bottom: 0.3em;
 	}
 	h3 {
 		font-family: $font-beta;
 		font-weight: 300;
-		font-size: 24px;
+		font-size: 1.5em;
 		display: inline;
 		a {
 			color: $color-black;
 			text-decoration: none;
-			font-size: 20px;
+			font-size: inherit;
 			border-bottom: 1px solid $color-blue;
 		}
 	}
 	li {
-		padding: 4px 0;
+		padding: 0.25em 0;
 	}
 	.more,
 	.more-link {
@@ -111,11 +111,11 @@ p {
 	p a {color: currentColor;}
 }
 
-.main-front h3 a {font-size: 24px;}
+.main-front h3 a {font-size: 1em;}
 
 .banner {
 	margin: 0;
-	padding: 10px 0;
+	padding: 0.625em 0;
 	background-color: $color-grey;
 	text-align: center;
 	a {color: $color-black;}
@@ -127,26 +127,26 @@ p {
 
 .article-about {
 	@extend .clearfix;
-	padding: 10px;
+	padding: 0.625em;
 	background: $color-grey;
 	text-align: center;
 	h3 {
-		font-size: 24px;
+		font-size: 1.5em;
 		font-weight: 400;
-		margin: 0 0 5px 0;
+		margin: 0 0 0.313em 0;
 	}
 	p {
-		margin: 4px 0;
+		margin: 0.25em 0;
 		a {color: $color-black;}
 	}
 }
 
-@media all and (min-width: 540px) {
+@media all and (min-width: 33.750em) {
 	.article-about {
 		text-align: left;
 		img {
 			float: left;
-			margin: 0 20px 20px 0;
+			margin: 0 1.25em 1.25em 0;
 		}
 	}
 }
@@ -154,22 +154,22 @@ p {
 
 .site-article {
 	h1 {
-		margin-bottom: 2px;
-		font-size: 30px;
+		margin-bottom: 0.125em;
+		font-size: 1.875em;
 		font-weight: 400;
 	}
 	h2 {
-		font-size: 24px;
+		font-size: 1.5em;
 		font-weight: 400;
-		margin: 0 0 14px 0;
+		margin: 0 0 0.875em 0;
 	}
 	h3 a {color: $color-black;}
 }
 
 .hire-me {
-	padding: 10px;
+	padding: 0.625em;
 	background: $color-grey;
-	margin: 0 0 30px 0;
+	margin: 0 0 1.875em 0;
 }
 
 
@@ -180,13 +180,13 @@ p {
 
 .commentlist {
 	margin: 0;
-	padding: 20px 0 0 0;
+	padding: 1.25em 0 0 0;
 	list-style: none;
 	img {
-		border-radius: 20px;
+		border-radius: 1.25em;
 	}
 	li {
-		padding-bottom: 20px;
+		padding-bottom: 1.25em;
 		border-bottom: 1px solid $color-grey;
 	}
 }
