@@ -77,4 +77,4 @@ function loadFont(fontName, woffUrl, woff2Url, onlyLoadFontOnSecondPageload) {
 }
 
 
-loadFont('sourceSans', 'fonts.css', 'fonts1.css', true);
+loadFont('sourceSans', '/log/fonts.css', '/log/fonts1.css', true);
