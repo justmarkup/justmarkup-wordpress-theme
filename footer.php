@@ -16,6 +16,7 @@
 		<small>Copyright &copy; Michael Scharnagl <time datetime="<?php echo date('Y'); ?>"><?php echo date('Y'); ?></time>. All rights reserved. <a href="<?php echo get_site_url(); ?>/index.php/imprint/"><?php _e( 'Imprint', 'justmarkup' ); ?></a></small>
 	</footer>
 
+	<script async src="<?php echo get_template_directory_uri(); ?>/dist/js/head.min.js"></script>
 	<script>
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register('/log/sw.min.js', {scope: '/log/'});
