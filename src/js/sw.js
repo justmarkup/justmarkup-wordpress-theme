@@ -1,10 +1,11 @@
-var version = 'v1.0.8:';
+var version = 'v1.0.9:';
 
 var theme_path = 'wp-content/themes/justmarkup.com/';
 
 var offlineFundamentals = [
 	'./',
-	theme_path + 'dist/js/head.min.js',
+	theme_path + 'dist/js/main.min.js',
+	theme_path + 'dist/js/prism.min.js',
 	theme_path + 'offline.html'
 ];
 
