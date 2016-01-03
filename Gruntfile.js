@@ -20,8 +20,9 @@ module.exports = function(grunt){
 		uglify: {
 			build: {
 				files: {
-					'dist/js/head.min.js': ['src/js/ctm.js', 'src/js/fontloader.js'],
-					'dist/js/sw.min.js': ['src/js/sw.js']
+					'dist/js/main.min.js': ['src/js/ctm.js', 'src/js/fontloader.js'],
+					'dist/js/sw.min.js': ['src/js/sw.js'],
+					'dist/js/prism.min.js': ['src/js/prism.js']
 				}
 			}
 		},
@@ -46,7 +47,8 @@ module.exports = function(grunt){
 					style: 'compressed'
 				},
 				files: {
-					'dist/css/main.css': 'src/scss/main.scss'
+					'dist/css/main.css': 'src/scss/main.scss',
+					'dist/css/prism.css': 'src/scss/vendor/prism.scss'
 				}
 			}
 		},
