@@ -1,4 +1,4 @@
-var version = 'v1.0.9:';
+var version = 'v1.1.0:';
 
 var theme_path = 'wp-content/themes/justmarkup.com/';
 
