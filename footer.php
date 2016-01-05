@@ -17,7 +17,7 @@
 	</footer>
 
 	<script async src="<?php echo get_template_directory_uri(); ?>/dist/js/main.min.js"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/dist/js/prism.min.js"></script>
+	<script defer src="<?php echo get_template_directory_uri(); ?>/dist/js/prism.min.js"></script>
 	<script>
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register('/log/sw.min.js', {scope: '/log/'});
