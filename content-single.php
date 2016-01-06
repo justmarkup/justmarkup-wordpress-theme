@@ -16,6 +16,17 @@
 			<span class="article-details"><time datetime="<?php justmarkup_posted_on_datetime(); ?>"><?php justmarkup_posted_on(); ?></time> by <a href="http://twitter.com/justmarkup">Michael Scharnagl</a></span>
 		<?php endif; ?>
 
+		<?php 
+		$dateNow = time();
+		$dateNow = strtotime('-1 years', $dateNow);
+
+		$lastModDate = get_the_modified_time('F j, Y');
+		$lastModDateTime = strtotime($lastModDate);
+	
+		if ($lastModDateTime < $dateNow) {
+			echo '<p class="info-updated">This article has been updated the last time on '.$lastModDate.' and the given information may be not accurate anymore. Feel free to contact me on <a href="https://twitter.com/justmarkup">twitter</a> to get more details.</p>';
+		} 
+		?>
 
 		<div class="entry-content">
 			<?php the_content(); ?>
