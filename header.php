@@ -52,7 +52,6 @@
 </head>
 <body <?php body_class(); ?>>
 	<header class="header"role="banner">
-		<p class="banner">This site is undergoing an <a href="https://justmarkup.com/log/2015/11/open-redesign/">open redesign</a>. See the <a href="https://github.com/justmarkup/justmarkup.com">Code</a> and open <a href="https://github.com/justmarkup/justmarkup.com/issues">Issues</a>.</p>
 		<h1><a class="logo" title="Home" href="<?php echo get_home_url(); ?>/"><svg width="120" height="90" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title">
  <title id="title">justmarkup</title>
  <g>
