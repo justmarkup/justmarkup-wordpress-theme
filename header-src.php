@@ -14,7 +14,7 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
-
+<meta name="theme-color" content="rgba(39,174,96,0.6)" />
 <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/manifest.json" />
 <title><?php
 	/*
