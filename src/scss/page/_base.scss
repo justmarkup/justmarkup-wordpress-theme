@@ -107,7 +107,8 @@ p {
 		text-decoration: none;
 		display: block;
 	}
-	p a {color: currentColor;}
+	p a,
+	li a {color: currentColor;}
 }
 
 .main-front h3 a {font-size: 1em;}

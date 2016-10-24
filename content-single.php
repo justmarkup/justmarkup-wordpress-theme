@@ -31,6 +31,8 @@
 		<div class="entry-content">
 			<?php the_content(); ?>
 		</div><!-- .entry-content -->
+
+		<a class="share-btn" href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>%20<?php echo get_permalink(); ?>">Share via Twitter</a>
 	</article>
 
 	<?php comments_template( '', true ); ?>

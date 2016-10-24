@@ -16,6 +16,39 @@
 <meta name="viewport" content="width=device-width" />
 <meta name="theme-color" content="rgba(39,174,96,0.6)" />
 <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/manifest.json" />
+<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2016-12-01" content="AoKbIKSXVxhj3LKywOdYti3sB5YXFUeJ727d8VDPSyMygl7ZmAkCFQXvYKuwWz+LfR+7hwEOKjpH6i/B5gbS3wsAAABVeyJvcmlnaW4iOiAiaHR0cHM6Ly9qdXN0bWFya3VwLmNvbTo0NDMiLCAiZmVhdHVyZSI6ICJXZWJTaGFyZSIsICJleHBpcnkiOiAxNDgwNjI2MzIxfQ==">
+<?php
+#twitter cards hack
+function catch_that_image() {
+  global $post, $posts;
+  $first_img = '';
+  ob_start();
+  ob_end_clean();
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+  $first_img = $matches[1][0];
+
+  if(empty($first_img)) {
+    $first_img = "";
+  }
+  return $first_img;
+}
+
+if(is_single() || is_page()) {
+	$twitter_url = get_permalink();
+	$twitter_title = get_the_title();
+	$twitter_desc = get_the_content();
+	$twitter_thumb = catch_that_image();
+  $twitter_name = 'justmarkup';
+?>
+<meta name="twitter:card" value="summary" />
+<meta name="twitter:url" value="<?php echo $twitter_url; ?>" />
+<meta name="twitter:title" value="<?php echo $twitter_title; ?>" />
+<meta name="twitter:description" value="<?php echo $twitter_desc; ?>" />
+<meta name="twitter:image" value="<?php echo $twitter_thumb; ?>" />
+<meta name="twitter:creator" value="@<?php echo $twitter_name; ?>" />
+<?php
+  }
+?>
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.

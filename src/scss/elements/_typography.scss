@@ -21,3 +21,17 @@ blockquote {
 blockquote p {
 	display: inline;
 }
+
+.share-btn {
+	background: #0971b1;
+	color: #fff;
+	padding: 0.4em 0.8em;
+	text-decoration: none;
+	display: inline-block;
+	margin-bottom: 2em;
+}
+
+.share-btn:focus,
+.share-btn:hover {
+	background: #0c4061;
+}
